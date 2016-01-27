@@ -1,7 +1,7 @@
 {
-  "name": "select",
+  "name": "nab-select",
   "version": "0.1.0",
-  "description": "A tiny DOM selection and traversal library.",
+  "description": "A minimal DOM selection and traversal library.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
