@@ -104,3 +104,5 @@ function Select(selector, scope){
 
 	return _bundle(nodes);
 }
+
+module.exports = Select;
