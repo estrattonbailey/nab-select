@@ -1,8 +1,8 @@
 {
   "name": "nab-select",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A minimal DOM selection and traversal library.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "npm run package",
     "build": "umd index.js src/index.js dist/index.js",
