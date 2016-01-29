@@ -76,15 +76,15 @@ function Select(selector, scope){
 	var query,
 			nodes = [];
 	
-	if (typeof selector !== 'string'){
-		return nodes
-	}
-	
-  query = (scope || document).querySelectorAll(selector)
-	
-	if (!query) return nodes && console.log('Bad selector '+selector+'. Not found.');
-	
-	nodes = _array(query);
+  if (selector.nodeType && selector.nodeType === 1){
+    nodes.push(selector);
+  } else {
+    query = (scope || document).querySelectorAll(selector)
+    
+    if (!query) return nodes && console.log('Bad selector '+selector+'. Not found.');
+    
+    nodes = _array(query);
+  }
 
 	return _bundle(nodes);
 }
