@@ -2,8 +2,11 @@
 ### Todo
 1. Make it better.
 
-### Run
+### Getting Started
 ```bash
+npm i
+
+# Compile
 npm start
 ```
 
