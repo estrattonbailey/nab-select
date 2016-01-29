@@ -4,8 +4,10 @@
   "description": "A minimal DOM selection and traversal library.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "umd index.js src/index.js | uglifyjs > dist/index.js"
+    "start": "npm package",
+    "build": "umd index.js src/index.js dist/index.js",
+    "package": "umd index.js src/index.js | uglifyjs > dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

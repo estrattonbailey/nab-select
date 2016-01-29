@@ -1,3 +1,6 @@
+var del = document.documentElement || {};
+var _match = (del.matches || del.webkitMatchesSelector || del.mozMatchesSelector || del.oMatchesSelector || del.msMatchesSelector || function(){return false;});
+
 var proto = {
 	find: function(selector){
 		return Select(selector, this.context)
@@ -17,7 +20,7 @@ var proto = {
 				return context;
 			}
 			
-			var match = _matches(selector.charAt(0), search, selector);
+			var match = _match.call(search, selector) ? search : false;
 			
 			if (match){
 				nodes.push(match);
@@ -33,7 +36,7 @@ var proto = {
 		if (selector){
 			siblings.forEach(function(sib, i){
 				if (sib !== context) {
-					var match = _matches(selector.charAt(0), sib, selector);
+					var match = _match.call(sib, selector) ? sib : false;
 					if (match){
 						nodes.push(match)
 					}
@@ -53,21 +56,6 @@ var proto = {
 
 function _array(nodelist){
 	return Array.prototype.slice.call(nodelist);
-}
-
-function _matches(t, c, s){
-	if (t === '.' && c.classList.contains(s.substr(1))) {
-		return c;
-	}
-	if (t === '#' && c.id === s.substr(1)) {
-		return c;
-	} 
-	if (t === '[' && c.hasAttribute(s.substr(1, s.length - 2))) {
-		return c;
-	}
-	if (c.tagName.toLowerCase() === s) {
-		return c;
-	}
 }
 
 function _bundle(nodes){	
@@ -92,11 +80,7 @@ function Select(selector, scope){
 		return nodes
 	}
 	
-	if (selector.charAt(0) === '#') {
-		query = document.getElementById(selector.substr(1))
-	} else {
-		query = (scope || document).querySelectorAll(selector)
-	}
+  query = (scope || document).querySelectorAll(selector)
 	
 	if (!query) return nodes && console.log('Bad selector '+selector+'. Not found.');
 	
@@ -105,4 +89,4 @@ function Select(selector, scope){
 	return _bundle(nodes);
 }
 
-module.exports = Select;
+return Select;
